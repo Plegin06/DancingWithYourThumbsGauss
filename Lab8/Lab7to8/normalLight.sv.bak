@@ -1,0 +1,70 @@
+module centerLight (clk, reset, L, R, LN, RN, lightOn);
+	input logic clk, reset;
+	
+	
+	input logic L, R, LN, RN;
+	output logic lightOn;
+	
+	enum { on, off } ps, ns;
+	
+	//state encoding
+	always_comb begin
+		case (ps)
+			on: if ((L == 1 || R == 1) && reset == 0) ns = off;
+				else ns = on;
+			off: if ((RN && L == 1) || (RN && R == 1)) ns = on;
+				else ns = off;
+					
+		endcase
+	end
+	
+	//output
+	always_comb begin
+		case (ps)
+			on: lightOn = 1;
+			off: lightOn = 0;
+		endcase
+	end
+	
+	// DFFs
+	always_ff @(posedge clk) begin
+		if (reset)
+			ps <= on;
+		else
+			ps <= ns;
+	end
+endmodule
+
+module centerLight_testbench();
+	logic clk, reset, L, R, LN, RN, lightOn;
+	
+	centerLight dut (.clk, .reset, .L, .R, .LN, .RN, .lightOn);
+	parameter CLOCK_PERIOD=100;
+	
+	initial begin
+		clk <= 0;
+		forever #(CLOCK_PERIOD/2) clk <= ~clk; // Forever toggle the clock
+		end
+		
+		// Set up the inputs to the design. Each line is a clock cycle.
+		initial begin
+		reset <= 1; L <= 0; R <= 0; RN <= 0; LN <= 0; repeat(3) @(posedge clk); // Always reset FSMs at start
+		reset <= 0; repeat(3) @(posedge clk);
+		L <= 1; 			@(posedge clk);
+		L <= 0; 			@(posedge clk);
+		RN <= 1; 		@(posedge clk);
+		L <= 1;			@(posedge clk);
+		L <= 0;			repeat(3) @(posedge clk);
+		RN <= 0;			@(posedge clk);
+		R <= 1;			@(posedge clk);
+		R <= 0;			@(posedge clk);
+		LN <= 1; 		repeat(2) @(posedge clk);
+		R <= 1;			@(posedge clk);
+		R <= 0; LN <= 0;	repeat(3) @(posedge clk);
+		reset <= 1;	@(posedge clk);
+		RN <= 1;			@(posedge clk);
+		L <= 1;			repeat(2) @(posedge clk);
+		L <= 0;			@(posedge clk);
+		$stop; // End the simulation.
+	end
+endmodule

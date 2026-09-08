@@ -1,0 +1,37 @@
+module LFSR_twentyfour (clk, reset, bitout);
+	input logic clk, reset;
+	output logic [23:0] bitout;
+	
+	
+	//xnor
+	logic feedback;
+	assign feedback = ~ (bitout[24] ^ bitout[23] ^ bitout[22] ^ bitout[17]);
+
+	
+	always_ff @(posedge clk) begin
+		if (reset) bitout <= 24'b001001110101001010111011;
+		else bitout <= { bitout[8:0], feedback };
+	end
+	
+endmodule
+
+module LFSR_ten_testbench ();
+	logic clk, reset;
+	logic [9:0] bitout;
+	
+	LFSR_ten dut (.clk(clk), .reset(reset), .bitout(bitout));
+	
+	parameter CLOCK_PERIOD=100;
+	initial begin
+		clk <= 0;
+		forever #(CLOCK_PERIOD/2) clk <= ~clk; // Forever toggle the clock
+	end
+	
+	initial begin
+		reset <= 1; @(posedge clk);
+		reset <= 0; @(posedge clk);
+				repeat(1000) @(posedge clk);
+		$stop;
+	end
+
+endmodule 

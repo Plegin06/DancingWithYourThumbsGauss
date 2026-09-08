@@ -1,0 +1,10 @@
+module LFSR_ten (bitout);
+	output logic [9:0] bitout;
+	
+	
+	
+endmodule
+
+module LFSR_ten_testbench ();
+
+endmodule 

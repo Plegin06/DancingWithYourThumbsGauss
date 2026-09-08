@@ -1,0 +1,10 @@
+//this module checks if a player has clicked their button at the appropriate time for the position of the bar.
+//A full success is 2 points, meaning the LED was on the spot when the player pressed
+//A half success is 1 point, meaning the LED was one row away when the player pressed
+module input_attempt ();
+
+endmodule
+
+module input_attempt_testbench ();
+
+endmodule

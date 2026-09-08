@@ -1,0 +1,7 @@
+module tug_input();
+
+endmodule
+
+module tug_input_testbench();
+
+endmodule

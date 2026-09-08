@@ -1,0 +1,11 @@
+module point_adder (clk, reset, score, total);
+	input logic clk, reset;
+	input logic [1:0] score;
+	output logic [6:0] total;
+	
+	
+endmodule
+
+module point_adder_testbench ();
+
+endmodule

@@ -1,0 +1,14 @@
+module centerLight (clock, reset, L, R, LN, RN, lightOn)
+	input logic clock, reset;
+	
+	input logic L, R, LN, RN;
+	output logic lightOn;
+	
+endmodule
+
+module centerLight_testbench()
+	logic clock, reset, L, R, LN, RN, lightOn;
+	
+	centerLight dut (.clock, .reset, .L, .R, .LN, .RN, .lightOn);
+	
+	

@@ -1,0 +1,955 @@
+Analysis & Synthesis report for DE1_SoC
+Mon May 25 19:11:42 2026
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |DE1_SoC
+ 12. Parameter Settings for User Entity Instance: LEDDriver:Driver
+ 13. Parameter Settings for Inferred Entity Instance: point_displayer:display_drive|lpm_divide:Mod1
+ 14. Parameter Settings for Inferred Entity Instance: point_displayer:display_drive|lpm_divide:Div1
+ 15. Parameter Settings for Inferred Entity Instance: point_displayer:display_drive|lpm_divide:Mod0
+ 16. Parameter Settings for Inferred Entity Instance: point_displayer:display_drive|lpm_divide:Div0
+ 17. Port Connectivity Checks: "col_freezer:win_col4"
+ 18. Port Connectivity Checks: "col_freezer:win_col3"
+ 19. Port Connectivity Checks: "col_freezer:win_col2"
+ 20. Port Connectivity Checks: "col_freezer:win_col1"
+ 21. Port Connectivity Checks: "LEDDriver:Driver"
+ 22. Port Connectivity Checks: "clock_divider:cdiv"
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+ 26. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon May 25 19:11:42 2026       ;
+; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
+; Revision Name                   ; DE1_SoC                                     ;
+; Top-level Entity Name           ; DE1_SoC                                     ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 221                                         ;
+; Total pins                      ; 103                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; DE1_SoC            ; DE1_SoC            ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; State Machine Processing                                                        ; User-Encoded       ; Auto               ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                               ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                   ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                               ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
+; LEDDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/LEDDriver.sv                                 ;         ;
+; DE1_SoC.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv                                   ;         ;
+; clock_divider.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/clock_divider.sv                             ;         ;
+; tug_input.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/tug_input.sv                                 ;         ;
+; input_validator.sv               ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/input_validator.sv                           ;         ;
+; LED_cascade.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/LED_cascade.sv                               ;         ;
+; input_attempt.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/input_attempt.sv                             ;         ;
+; clock_counter.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/clock_counter.sv                             ;         ;
+; pulse_verifier.sv                ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/pulse_verifier.sv                            ;         ;
+; LFSR_counter.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/LFSR_counter.sv                              ;         ;
+; LFSR_twentyfour.sv               ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/LFSR_twentyfour.sv                           ;         ;
+; point_adder.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/point_adder.sv                               ;         ;
+; total_adder.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/total_adder.sv                               ;         ;
+; point_displayer.sv               ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv                           ;         ;
+; hex_number_picker.sv             ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/hex_number_picker.sv                         ;         ;
+; col_freezer.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/EE271Projects/Lab8/Lab7to8/col_freezer.sv                               ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal170.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/aglobal170.inc      ;         ;
+; db/lpm_divide_j3m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/EE271Projects/Lab8/Lab7to8/db/lpm_divide_j3m.tdf                        ;         ;
+; db/sign_div_unsign_mlh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/EE271Projects/Lab8/Lab7to8/db/sign_div_unsign_mlh.tdf                   ;         ;
+; db/alt_u_div_ive.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/EE271Projects/Lab8/Lab7to8/db/alt_u_div_ive.tdf                         ;         ;
+; db/lpm_divide_gbm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/EE271Projects/Lab8/Lab7to8/db/lpm_divide_gbm.tdf                        ;         ;
+; db/lpm_divide_jbm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/EE271Projects/Lab8/Lab7to8/db/lpm_divide_jbm.tdf                        ;         ;
+; db/sign_div_unsign_plh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/EE271Projects/Lab8/Lab7to8/db/sign_div_unsign_plh.tdf                   ;         ;
+; db/alt_u_div_ove.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/EE271Projects/Lab8/Lab7to8/db/alt_u_div_ove.tdf                         ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                         ;
++---------------------------------------------+---------------------------------------+
+; Resource                                    ; Usage                                 ;
++---------------------------------------------+---------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 526                                   ;
+;                                             ;                                       ;
+; Combinational ALUT usage for logic          ; 906                                   ;
+;     -- 7 input functions                    ; 16                                    ;
+;     -- 6 input functions                    ; 127                                   ;
+;     -- 5 input functions                    ; 76                                    ;
+;     -- 4 input functions                    ; 120                                   ;
+;     -- <=3 input functions                  ; 567                                   ;
+;                                             ;                                       ;
+; Dedicated logic registers                   ; 221                                   ;
+;                                             ;                                       ;
+; I/O pins                                    ; 103                                   ;
+;                                             ;                                       ;
+; Total DSP Blocks                            ; 0                                     ;
+;                                             ;                                       ;
+; Maximum fan-out node                        ; clock_divider:cdiv|divided_clocks[13] ;
+; Maximum fan-out                             ; 208                                   ;
+; Total fan-out                               ; 4035                                  ;
+; Average fan-out                             ; 3.03                                  ;
++---------------------------------------------+---------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                              ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                    ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |DE1_SoC                                  ; 906 (12)            ; 221 (0)                   ; 0                 ; 0          ; 103  ; 0            ; |DE1_SoC                                                                                                                               ; DE1_SoC             ; work         ;
+;    |LEDDriver:Driver|                     ; 29 (29)             ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|LEDDriver:Driver                                                                                                              ; LEDDriver           ; work         ;
+;    |LED_cascade:col_1_cascade|            ; 28 (28)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|LED_cascade:col_1_cascade                                                                                                     ; LED_cascade         ; work         ;
+;    |LED_cascade:col_2_cascade|            ; 27 (27)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|LED_cascade:col_2_cascade                                                                                                     ; LED_cascade         ; work         ;
+;    |LED_cascade:col_3_cascade|            ; 27 (27)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|LED_cascade:col_3_cascade                                                                                                     ; LED_cascade         ; work         ;
+;    |LED_cascade:col_4_cascade|            ; 27 (27)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|LED_cascade:col_4_cascade                                                                                                     ; LED_cascade         ; work         ;
+;    |LFSR_counter:LFSR_clock|              ; 28 (28)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|LFSR_counter:LFSR_clock                                                                                                       ; LFSR_counter        ; work         ;
+;    |LFSR_twentyfour:pseudo_pulse|         ; 14 (14)             ; 24 (24)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|LFSR_twentyfour:pseudo_pulse                                                                                                  ; LFSR_twentyfour     ; work         ;
+;    |clock_counter:slow_clock|             ; 32 (32)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|clock_counter:slow_clock                                                                                                      ; clock_counter       ; work         ;
+;    |clock_divider:cdiv|                   ; 14 (14)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|clock_divider:cdiv                                                                                                            ; clock_divider       ; work         ;
+;    |col_freezer:win_col1|                 ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|col_freezer:win_col1                                                                                                          ; col_freezer         ; work         ;
+;    |col_freezer:win_col2|                 ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|col_freezer:win_col2                                                                                                          ; col_freezer         ; work         ;
+;    |col_freezer:win_col3|                 ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|col_freezer:win_col3                                                                                                          ; col_freezer         ; work         ;
+;    |col_freezer:win_col4|                 ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|col_freezer:win_col4                                                                                                          ; col_freezer         ; work         ;
+;    |input_attempt:col_1_input|            ; 12 (12)             ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_attempt:col_1_input                                                                                                     ; input_attempt       ; work         ;
+;    |input_attempt:col_2_input|            ; 12 (12)             ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_attempt:col_2_input                                                                                                     ; input_attempt       ; work         ;
+;    |input_attempt:col_3_input|            ; 12 (12)             ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_attempt:col_3_input                                                                                                     ; input_attempt       ; work         ;
+;    |input_attempt:col_4_input|            ; 12 (12)             ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_attempt:col_4_input                                                                                                     ; input_attempt       ; work         ;
+;    |input_validator:valid_in0|            ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_validator:valid_in0                                                                                                     ; input_validator     ; work         ;
+;    |input_validator:valid_in1|            ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_validator:valid_in1                                                                                                     ; input_validator     ; work         ;
+;    |input_validator:valid_in2|            ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_validator:valid_in2                                                                                                     ; input_validator     ; work         ;
+;    |input_validator:valid_in3|            ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_validator:valid_in3                                                                                                     ; input_validator     ; work         ;
+;    |point_adder:points_col1|              ; 38 (38)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_adder:points_col1                                                                                                       ; point_adder         ; work         ;
+;    |point_adder:points_col2|              ; 38 (38)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_adder:points_col2                                                                                                       ; point_adder         ; work         ;
+;    |point_adder:points_col3|              ; 38 (38)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_adder:points_col3                                                                                                       ; point_adder         ; work         ;
+;    |point_adder:points_col4|              ; 38 (38)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_adder:points_col4                                                                                                       ; point_adder         ; work         ;
+;    |point_displayer:display_drive|        ; 419 (36)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive                                                                                                 ; point_displayer     ; work         ;
+;       |hex_number_picker:hunds_hex|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|hex_number_picker:hunds_hex                                                                     ; hex_number_picker   ; work         ;
+;       |hex_number_picker:ones_hex|        ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|hex_number_picker:ones_hex                                                                      ; hex_number_picker   ; work         ;
+;       |hex_number_picker:tens_hex|        ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|hex_number_picker:tens_hex                                                                      ; hex_number_picker   ; work         ;
+;       |lpm_divide:Div0|                   ; 100 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_jbm:auto_generated|  ; 100 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Div0|lpm_divide_jbm:auto_generated                                                   ; lpm_divide_jbm      ; work         ;
+;             |sign_div_unsign_plh:divider| ; 100 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Div0|lpm_divide_jbm:auto_generated|sign_div_unsign_plh:divider                       ; sign_div_unsign_plh ; work         ;
+;                |alt_u_div_ove:divider|    ; 100 (100)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Div0|lpm_divide_jbm:auto_generated|sign_div_unsign_plh:divider|alt_u_div_ove:divider ; alt_u_div_ove       ; work         ;
+;       |lpm_divide:Div1|                   ; 92 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_gbm:auto_generated|  ; 92 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Div1|lpm_divide_gbm:auto_generated                                                   ; lpm_divide_gbm      ; work         ;
+;             |sign_div_unsign_mlh:divider| ; 92 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Div1|lpm_divide_gbm:auto_generated|sign_div_unsign_mlh:divider                       ; sign_div_unsign_mlh ; work         ;
+;                |alt_u_div_ive:divider|    ; 92 (92)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Div1|lpm_divide_gbm:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_ive:divider ; alt_u_div_ive       ; work         ;
+;       |lpm_divide:Mod0|                   ; 78 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_j3m:auto_generated|  ; 78 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Mod0|lpm_divide_j3m:auto_generated                                                   ; lpm_divide_j3m      ; work         ;
+;             |sign_div_unsign_mlh:divider| ; 78 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Mod0|lpm_divide_j3m:auto_generated|sign_div_unsign_mlh:divider                       ; sign_div_unsign_mlh ; work         ;
+;                |alt_u_div_ive:divider|    ; 78 (78)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Mod0|lpm_divide_j3m:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_ive:divider ; alt_u_div_ive       ; work         ;
+;       |lpm_divide:Mod1|                   ; 92 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_j3m:auto_generated|  ; 92 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Mod1|lpm_divide_j3m:auto_generated                                                   ; lpm_divide_j3m      ; work         ;
+;             |sign_div_unsign_mlh:divider| ; 92 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Mod1|lpm_divide_j3m:auto_generated|sign_div_unsign_mlh:divider                       ; sign_div_unsign_mlh ; work         ;
+;                |alt_u_div_ive:divider|    ; 92 (92)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|point_displayer:display_drive|lpm_divide:Mod1|lpm_divide_j3m:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_ive:divider ; alt_u_div_ive       ; work         ;
+;    |pulse_verifier:pulse_col1|            ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|pulse_verifier:pulse_col1                                                                                                     ; pulse_verifier      ; work         ;
+;    |pulse_verifier:pulse_col2|            ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|pulse_verifier:pulse_col2                                                                                                     ; pulse_verifier      ; work         ;
+;    |pulse_verifier:pulse_col3|            ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|pulse_verifier:pulse_col3                                                                                                     ; pulse_verifier      ; work         ;
+;    |pulse_verifier:pulse_col4|            ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|pulse_verifier:pulse_col4                                                                                                     ; pulse_verifier      ; work         ;
+;    |total_adder:point_total|              ; 21 (21)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|total_adder:point_total                                                                                                       ; total_adder         ; work         ;
+;    |tug_input:meta_input0|                ; 1 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|tug_input:meta_input0                                                                                                         ; tug_input           ; work         ;
+;    |tug_input:meta_input1|                ; 1 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|tug_input:meta_input1                                                                                                         ; tug_input           ; work         ;
+;    |tug_input:meta_input2|                ; 1 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|tug_input:meta_input2                                                                                                         ; tug_input           ; work         ;
+;    |tug_input:meta_input3|                ; 1 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|tug_input:meta_input3                                                                                                         ; tug_input           ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                         ;
++-------------------------------------------------+----------------------------------------------------------+
+; Register name                                   ; Reason for Removal                                       ;
++-------------------------------------------------+----------------------------------------------------------+
+; input_validator:valid_in0|ps[1..31]             ; Stuck at GND due to stuck port data_in                   ;
+; input_validator:valid_in1|ps[1..31]             ; Stuck at GND due to stuck port data_in                   ;
+; input_validator:valid_in2|ps[1..31]             ; Stuck at GND due to stuck port data_in                   ;
+; input_validator:valid_in3|ps[1..31]             ; Stuck at GND due to stuck port data_in                   ;
+; LED_cascade:col_1_cascade|pixels_col[14][1]     ; Merged with LED_cascade:col_1_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[14][2]     ; Merged with LED_cascade:col_1_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[14][3]     ; Merged with LED_cascade:col_1_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[14][1]     ; Merged with LED_cascade:col_2_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[14][2]     ; Merged with LED_cascade:col_2_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[14][3]     ; Merged with LED_cascade:col_2_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[14][1]     ; Merged with LED_cascade:col_3_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[14][2]     ; Merged with LED_cascade:col_3_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[14][3]     ; Merged with LED_cascade:col_3_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[14][1]     ; Merged with LED_cascade:col_4_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[14][2]     ; Merged with LED_cascade:col_4_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[14][3]     ; Merged with LED_cascade:col_4_cascade|pixels_col[14][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[15][1]     ; Merged with LED_cascade:col_4_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[15][2]     ; Merged with LED_cascade:col_4_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[15][3]     ; Merged with LED_cascade:col_4_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[13][1]     ; Merged with LED_cascade:col_4_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[13][2]     ; Merged with LED_cascade:col_4_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[13][3]     ; Merged with LED_cascade:col_4_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[12][1]     ; Merged with LED_cascade:col_4_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[12][2]     ; Merged with LED_cascade:col_4_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[12][3]     ; Merged with LED_cascade:col_4_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[11][1]     ; Merged with LED_cascade:col_4_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[11][2]     ; Merged with LED_cascade:col_4_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[11][3]     ; Merged with LED_cascade:col_4_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[10][1]     ; Merged with LED_cascade:col_4_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[10][2]     ; Merged with LED_cascade:col_4_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[10][3]     ; Merged with LED_cascade:col_4_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_4_cascade|pixels_col[9][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[9][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[9][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[8][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[8][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[8][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[7][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[7][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[7][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[6][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[6][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[6][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[5][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[5][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[5][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[4][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[4][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[4][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[3][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[3][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[3][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[2][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[2][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[2][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[1][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[1][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[1][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[0][1]      ; Merged with LED_cascade:col_4_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[0][2]      ; Merged with LED_cascade:col_4_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_4_cascade|pixels_col[0][3]      ; Merged with LED_cascade:col_4_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[15][1]     ; Merged with LED_cascade:col_3_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[15][2]     ; Merged with LED_cascade:col_3_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[15][3]     ; Merged with LED_cascade:col_3_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[13][1]     ; Merged with LED_cascade:col_3_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[13][2]     ; Merged with LED_cascade:col_3_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[13][3]     ; Merged with LED_cascade:col_3_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[12][1]     ; Merged with LED_cascade:col_3_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[12][2]     ; Merged with LED_cascade:col_3_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[12][3]     ; Merged with LED_cascade:col_3_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[11][1]     ; Merged with LED_cascade:col_3_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[11][2]     ; Merged with LED_cascade:col_3_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[11][3]     ; Merged with LED_cascade:col_3_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[10][1]     ; Merged with LED_cascade:col_3_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[10][2]     ; Merged with LED_cascade:col_3_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[10][3]     ; Merged with LED_cascade:col_3_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_3_cascade|pixels_col[9][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[9][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[9][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[8][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[8][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[8][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[7][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[7][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[7][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[6][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[6][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[6][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[5][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[5][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[5][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[4][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[4][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[4][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[3][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[3][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[3][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[2][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[2][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[2][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[1][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[1][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[1][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[0][1]      ; Merged with LED_cascade:col_3_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[0][2]      ; Merged with LED_cascade:col_3_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_3_cascade|pixels_col[0][3]      ; Merged with LED_cascade:col_3_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[15][1]     ; Merged with LED_cascade:col_2_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[15][2]     ; Merged with LED_cascade:col_2_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[15][3]     ; Merged with LED_cascade:col_2_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[13][1]     ; Merged with LED_cascade:col_2_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[13][2]     ; Merged with LED_cascade:col_2_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[13][3]     ; Merged with LED_cascade:col_2_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[12][1]     ; Merged with LED_cascade:col_2_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[12][2]     ; Merged with LED_cascade:col_2_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[12][3]     ; Merged with LED_cascade:col_2_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[11][1]     ; Merged with LED_cascade:col_2_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[11][2]     ; Merged with LED_cascade:col_2_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[11][3]     ; Merged with LED_cascade:col_2_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[10][1]     ; Merged with LED_cascade:col_2_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[10][2]     ; Merged with LED_cascade:col_2_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[10][3]     ; Merged with LED_cascade:col_2_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_2_cascade|pixels_col[9][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[9][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[9][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[8][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[8][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[8][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[7][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[7][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[7][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[6][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[6][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[6][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[5][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[5][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[5][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[4][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[4][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[4][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[3][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[3][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[3][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[2][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[2][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[2][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[1][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[1][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[1][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[0][1]      ; Merged with LED_cascade:col_2_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[0][2]      ; Merged with LED_cascade:col_2_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_2_cascade|pixels_col[0][3]      ; Merged with LED_cascade:col_2_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[15][1]     ; Merged with LED_cascade:col_1_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[15][2]     ; Merged with LED_cascade:col_1_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[15][3]     ; Merged with LED_cascade:col_1_cascade|pixels_col[15][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[13][1]     ; Merged with LED_cascade:col_1_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[13][2]     ; Merged with LED_cascade:col_1_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[13][3]     ; Merged with LED_cascade:col_1_cascade|pixels_col[13][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[12][1]     ; Merged with LED_cascade:col_1_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[12][2]     ; Merged with LED_cascade:col_1_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[12][3]     ; Merged with LED_cascade:col_1_cascade|pixels_col[12][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[11][1]     ; Merged with LED_cascade:col_1_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[11][2]     ; Merged with LED_cascade:col_1_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[11][3]     ; Merged with LED_cascade:col_1_cascade|pixels_col[11][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[10][1]     ; Merged with LED_cascade:col_1_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[10][2]     ; Merged with LED_cascade:col_1_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[10][3]     ; Merged with LED_cascade:col_1_cascade|pixels_col[10][0]  ;
+; LED_cascade:col_1_cascade|pixels_col[9][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[9][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[9][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[9][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[8][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[8][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[8][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[8][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[7][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[7][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[7][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[7][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[6][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[6][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[6][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[6][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[5][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[5][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[5][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[5][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[4][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[4][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[4][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[4][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[3][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[3][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[3][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[3][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[2][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[2][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[2][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[2][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[1][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[1][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[1][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[1][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[0][1]      ; Merged with LED_cascade:col_1_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[0][2]      ; Merged with LED_cascade:col_1_cascade|pixels_col[0][0]   ;
+; LED_cascade:col_1_cascade|pixels_col[0][3]      ; Merged with LED_cascade:col_1_cascade|pixels_col[0][0]   ;
+; input_attempt:col_4_input|input_indicator[1..3] ; Merged with input_attempt:col_4_input|input_indicator[0] ;
+; input_attempt:col_3_input|input_indicator[1..3] ; Merged with input_attempt:col_3_input|input_indicator[0] ;
+; input_attempt:col_2_input|input_indicator[1..3] ; Merged with input_attempt:col_2_input|input_indicator[0] ;
+; input_attempt:col_1_input|input_indicator[1..3] ; Merged with input_attempt:col_1_input|input_indicator[0] ;
+; clock_divider:cdiv|divided_clocks[14..31]       ; Lost fanout                                              ;
+; Total Number of Removed Registers = 346         ;                                                          ;
++-------------------------------------------------+----------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 221   ;
+; Number of registers using Synchronous Clear  ; 134   ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 140   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |DE1_SoC|LED_cascade:col_1_cascade|current_row[2]     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |DE1_SoC|LED_cascade:col_2_cascade|current_row[1]     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |DE1_SoC|LED_cascade:col_3_cascade|current_row[3]     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |DE1_SoC|LED_cascade:col_4_cascade|current_row[0]     ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |DE1_SoC|LFSR_twentyfour:pseudo_pulse|bitout[7]       ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |DE1_SoC|LFSR_twentyfour:pseudo_pulse|bitout[6]       ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |DE1_SoC|clock_counter:slow_clock|counter[3]          ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |DE1_SoC|LFSR_counter:LFSR_clock|counter[11]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |DE1_SoC|input_attempt:col_4_input|can_score          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |DE1_SoC|input_attempt:col_3_input|input_indicator[0] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |DE1_SoC|input_attempt:col_2_input|input_indicator[0] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |DE1_SoC|input_attempt:col_1_input|can_score          ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 28 LEs               ; 7 LEs                  ; Yes        ; |DE1_SoC|point_adder:points_col4|total[7]             ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 28 LEs               ; 7 LEs                  ; Yes        ; |DE1_SoC|point_adder:points_col1|total[7]             ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 28 LEs               ; 7 LEs                  ; Yes        ; |DE1_SoC|point_adder:points_col2|total[3]             ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 28 LEs               ; 7 LEs                  ; Yes        ; |DE1_SoC|point_adder:points_col3|total[1]             ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |DE1_SoC|input_attempt:col_4_input|score[1]           ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |DE1_SoC|input_attempt:col_3_input|score[1]           ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |DE1_SoC|input_attempt:col_2_input|score[1]           ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |DE1_SoC|input_attempt:col_1_input|score[0]           ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; No         ; |DE1_SoC|LEDDriver:Driver|Mux15                       ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |DE1_SoC|LEDDriver:Driver|Mux23                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |DE1_SoC ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; whichClock     ; 13    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LEDDriver:Driver ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; FREQDIV        ; 0     ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: point_displayer:display_drive|lpm_divide:Mod1 ;
++------------------------+----------------+------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                 ;
++------------------------+----------------+------------------------------------------------------+
+; LPM_WIDTHN             ; 12             ; Untyped                                              ;
+; LPM_WIDTHD             ; 4              ; Untyped                                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                              ;
+; CBXI_PARAMETER         ; lpm_divide_j3m ; Untyped                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                       ;
++------------------------+----------------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: point_displayer:display_drive|lpm_divide:Div1 ;
++------------------------+----------------+------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                 ;
++------------------------+----------------+------------------------------------------------------+
+; LPM_WIDTHN             ; 12             ; Untyped                                              ;
+; LPM_WIDTHD             ; 4              ; Untyped                                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                              ;
+; CBXI_PARAMETER         ; lpm_divide_gbm ; Untyped                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                       ;
++------------------------+----------------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: point_displayer:display_drive|lpm_divide:Mod0 ;
++------------------------+----------------+------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                 ;
++------------------------+----------------+------------------------------------------------------+
+; LPM_WIDTHN             ; 12             ; Untyped                                              ;
+; LPM_WIDTHD             ; 4              ; Untyped                                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                              ;
+; CBXI_PARAMETER         ; lpm_divide_j3m ; Untyped                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                       ;
++------------------------+----------------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: point_displayer:display_drive|lpm_divide:Div0 ;
++------------------------+----------------+------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                 ;
++------------------------+----------------+------------------------------------------------------+
+; LPM_WIDTHN             ; 12             ; Untyped                                              ;
+; LPM_WIDTHD             ; 7              ; Untyped                                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                              ;
+; CBXI_PARAMETER         ; lpm_divide_jbm ; Untyped                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                       ;
++------------------------+----------------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "col_freezer:win_col4"                                                                       ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; greenOut[14] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "col_freezer:win_col3"                                                                       ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; greenOut[14] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "col_freezer:win_col2"                                                                       ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; greenOut[14] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "col_freezer:win_col1"                                                                       ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; greenOut[14] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "LEDDriver:Driver"    ;
++---------------+-------+----------+--------------+
+; Port          ; Type  ; Severity ; Details      ;
++---------------+-------+----------+--------------+
+; EnableCount   ; Input ; Info     ; Stuck at VCC ;
+; GrnPixels[14] ; Input ; Info     ; Stuck at VCC ;
++---------------+-------+----------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "clock_divider:cdiv"                                                                                   ;
++------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                   ; Type   ; Severity ; Details                                                                             ;
++------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; divided_clocks[31..14] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; divided_clocks[12..0]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 221                         ;
+;     ENA               ; 48                          ;
+;     ENA SCLR          ; 91                          ;
+;     ENA SLD           ; 1                           ;
+;     SCLR              ; 43                          ;
+;     plain             ; 38                          ;
+; arriav_lcell_comb     ; 912                         ;
+;     arith             ; 381                         ;
+;         0 data inputs ; 62                          ;
+;         1 data inputs ; 145                         ;
+;         2 data inputs ; 25                          ;
+;         3 data inputs ; 111                         ;
+;         4 data inputs ; 38                          ;
+;     extend            ; 16                          ;
+;         7 data inputs ; 16                          ;
+;     normal            ; 500                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 11                          ;
+;         2 data inputs ; 122                         ;
+;         3 data inputs ; 81                          ;
+;         4 data inputs ; 82                          ;
+;         5 data inputs ; 76                          ;
+;         6 data inputs ; 127                         ;
+;     shared            ; 15                          ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 2                           ;
+;         3 data inputs ; 10                          ;
+; boundary_port         ; 103                         ;
+;                       ;                             ;
+; Max LUT depth         ; 22.60                       ;
+; Average LUT depth     ; 10.09                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+    Info: Processing started: Mon May 25 19:11:36 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 3 design units, including 3 entities, in source file leddriver.sv
+    Info (12023): Found entity 1: LEDDriver File: C:/EE271Projects/Lab8/Lab7to8/LEDDriver.sv Line: 13
+    Info (12023): Found entity 2: LEDDriver_Test File: C:/EE271Projects/Lab8/Lab7to8/LEDDriver.sv Line: 34
+    Info (12023): Found entity 3: LEDDriver_TestPhysical File: C:/EE271Projects/Lab8/Lab7to8/LEDDriver.sv Line: 71
+Info (12021): Found 2 design units, including 2 entities, in source file led_test.sv
+    Info (12023): Found entity 1: LED_test File: C:/EE271Projects/Lab8/Lab7to8/LED_test.sv Line: 1
+    Info (12023): Found entity 2: LED_test_testbench File: C:/EE271Projects/Lab8/Lab7to8/LED_test.sv Line: 74
+Info (12021): Found 2 design units, including 2 entities, in source file de1_soc.sv
+    Info (12023): Found entity 1: DE1_SoC File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 2
+    Info (12023): Found entity 2: DE1_SoC_testbench File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 202
+Info (12021): Found 2 design units, including 2 entities, in source file two_hex.sv
+    Info (12023): Found entity 1: two_hex File: C:/EE271Projects/Lab8/Lab7to8/two_hex.sv Line: 1
+    Info (12023): Found entity 2: two_hex_testbench File: C:/EE271Projects/Lab8/Lab7to8/two_hex.sv Line: 18
+Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.sv
+    Info (12023): Found entity 1: clock_divider File: C:/EE271Projects/Lab8/Lab7to8/clock_divider.sv Line: 3
+Info (12021): Found 2 design units, including 2 entities, in source file airport_lights.sv
+    Info (12023): Found entity 1: airport_lights File: C:/EE271Projects/Lab8/Lab7to8/airport_lights.sv Line: 1
+    Info (12023): Found entity 2: airport_lights_testbench File: C:/EE271Projects/Lab8/Lab7to8/airport_lights.sv Line: 53
+Info (12021): Found 2 design units, including 2 entities, in source file centerlight.sv
+    Info (12023): Found entity 1: centerLight File: C:/EE271Projects/Lab8/Lab7to8/centerLight.sv Line: 1
+    Info (12023): Found entity 2: centerLight_testbench File: C:/EE271Projects/Lab8/Lab7to8/centerLight.sv Line: 38
+Info (12021): Found 2 design units, including 2 entities, in source file normallight.sv
+    Info (12023): Found entity 1: normalLight File: C:/EE271Projects/Lab8/Lab7to8/normalLight.sv Line: 1
+    Info (12023): Found entity 2: normalLight_testbench File: C:/EE271Projects/Lab8/Lab7to8/normalLight.sv Line: 42
+Info (12021): Found 2 design units, including 2 entities, in source file victory_condition.sv
+    Info (12023): Found entity 1: victory_condition File: C:/EE271Projects/Lab8/Lab7to8/victory_condition.sv Line: 1
+    Info (12023): Found entity 2: victory_condition_testbench File: C:/EE271Projects/Lab8/Lab7to8/victory_condition.sv Line: 43
+Info (12021): Found 2 design units, including 2 entities, in source file tug_input.sv
+    Info (12023): Found entity 1: tug_input File: C:/EE271Projects/Lab8/Lab7to8/tug_input.sv Line: 1
+    Info (12023): Found entity 2: tug_input_testbench File: C:/EE271Projects/Lab8/Lab7to8/tug_input.sv Line: 17
+Info (12021): Found 2 design units, including 2 entities, in source file hex_winner.sv
+    Info (12023): Found entity 1: hex_winner File: C:/EE271Projects/Lab8/Lab7to8/hex_winner.sv Line: 1
+    Info (12023): Found entity 2: hex_winner_testbench File: C:/EE271Projects/Lab8/Lab7to8/hex_winner.sv Line: 13
+Info (12021): Found 2 design units, including 2 entities, in source file input_validator.sv
+    Info (12023): Found entity 1: input_validator File: C:/EE271Projects/Lab8/Lab7to8/input_validator.sv Line: 1
+    Info (12023): Found entity 2: input_validator_testbench File: C:/EE271Projects/Lab8/Lab7to8/input_validator.sv Line: 35
+Info (12021): Found 2 design units, including 2 entities, in source file hex_counter.sv
+    Info (12023): Found entity 1: hex_counter File: C:/EE271Projects/Lab8/Lab7to8/hex_counter.sv Line: 1
+    Info (12023): Found entity 2: hex_counter_testbench File: C:/EE271Projects/Lab8/Lab7to8/hex_counter.sv Line: 32
+Info (12021): Found 2 design units, including 2 entities, in source file lfsr_ten.sv
+    Info (12023): Found entity 1: LFSR_ten File: C:/EE271Projects/Lab8/Lab7to8/LFSR_ten.sv Line: 1
+    Info (12023): Found entity 2: LFSR_ten_testbench File: C:/EE271Projects/Lab8/Lab7to8/LFSR_ten.sv Line: 18
+Info (12021): Found 2 design units, including 2 entities, in source file lfsr_four.sv
+    Info (12023): Found entity 1: LFSR_four File: C:/EE271Projects/Lab8/Lab7to8/LFSR_four.sv Line: 1
+    Info (12023): Found entity 2: LFSR_four_testbench File: C:/EE271Projects/Lab8/Lab7to8/LFSR_four.sv Line: 18
+Info (12021): Found 2 design units, including 2 entities, in source file ten_comparator.sv
+    Info (12023): Found entity 1: ten_comparator File: C:/EE271Projects/Lab8/Lab7to8/ten_comparator.sv Line: 1
+    Info (12023): Found entity 2: ten_comparator_testbench File: C:/EE271Projects/Lab8/Lab7to8/ten_comparator.sv Line: 9
+Info (12021): Found 2 design units, including 2 entities, in source file led_cascade.sv
+    Info (12023): Found entity 1: LED_cascade File: C:/EE271Projects/Lab8/Lab7to8/LED_cascade.sv Line: 3
+    Info (12023): Found entity 2: LED_cascade_testbench File: C:/EE271Projects/Lab8/Lab7to8/LED_cascade.sv Line: 56
+Info (12021): Found 1 design units, including 1 entities, in source file test_led_cascade.sv
+    Info (12023): Found entity 1: test_LED_cascade File: C:/EE271Projects/Lab8/Lab7to8/test_LED_cascade.sv Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file input_attempt.sv
+    Info (12023): Found entity 1: input_attempt File: C:/EE271Projects/Lab8/Lab7to8/input_attempt.sv Line: 12
+    Info (12023): Found entity 2: input_attempt_testbench File: C:/EE271Projects/Lab8/Lab7to8/input_attempt.sv Line: 96
+Info (12021): Found 2 design units, including 2 entities, in source file clock_counter.sv
+    Info (12023): Found entity 1: clock_counter File: C:/EE271Projects/Lab8/Lab7to8/clock_counter.sv Line: 1
+    Info (12023): Found entity 2: clock_counter_testbench File: C:/EE271Projects/Lab8/Lab7to8/clock_counter.sv Line: 48
+Info (12021): Found 2 design units, including 2 entities, in source file pulse_verifier.sv
+    Info (12023): Found entity 1: pulse_verifier File: C:/EE271Projects/Lab8/Lab7to8/pulse_verifier.sv Line: 1
+    Info (12023): Found entity 2: pulse_verifier_testbench File: C:/EE271Projects/Lab8/Lab7to8/pulse_verifier.sv Line: 29
+Info (12021): Found 2 design units, including 2 entities, in source file lfsr_counter.sv
+    Info (12023): Found entity 1: LFSR_counter File: C:/EE271Projects/Lab8/Lab7to8/LFSR_counter.sv Line: 1
+    Info (12023): Found entity 2: LFSR_counter_testbench File: C:/EE271Projects/Lab8/Lab7to8/LFSR_counter.sv Line: 51
+Info (12021): Found 2 design units, including 2 entities, in source file lfsr_twentyfour.sv
+    Info (12023): Found entity 1: LFSR_twentyfour File: C:/EE271Projects/Lab8/Lab7to8/LFSR_twentyfour.sv Line: 1
+    Info (12023): Found entity 2: LFSR_twentyfour_testbench File: C:/EE271Projects/Lab8/Lab7to8/LFSR_twentyfour.sv Line: 18
+Info (12021): Found 2 design units, including 2 entities, in source file point_adder.sv
+    Info (12023): Found entity 1: point_adder File: C:/EE271Projects/Lab8/Lab7to8/point_adder.sv Line: 1
+    Info (12023): Found entity 2: point_adder_testbench File: C:/EE271Projects/Lab8/Lab7to8/point_adder.sv Line: 34
+Info (12021): Found 2 design units, including 2 entities, in source file total_adder.sv
+    Info (12023): Found entity 1: total_adder File: C:/EE271Projects/Lab8/Lab7to8/total_adder.sv Line: 1
+    Info (12023): Found entity 2: total_adder_testbench File: C:/EE271Projects/Lab8/Lab7to8/total_adder.sv Line: 20
+Info (12021): Found 2 design units, including 2 entities, in source file point_displayer.sv
+    Info (12023): Found entity 1: point_displayer File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 3
+    Info (12023): Found entity 2: point_displayer_testbench File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 51
+Info (12021): Found 2 design units, including 2 entities, in source file hex_number_picker.sv
+    Info (12023): Found entity 1: hex_number_picker File: C:/EE271Projects/Lab8/Lab7to8/hex_number_picker.sv Line: 1
+    Info (12023): Found entity 2: hex_number_picker_testbench File: C:/EE271Projects/Lab8/Lab7to8/hex_number_picker.sv Line: 22
+Info (12021): Found 2 design units, including 2 entities, in source file col_freezer.sv
+    Info (12023): Found entity 1: col_freezer File: C:/EE271Projects/Lab8/Lab7to8/col_freezer.sv Line: 1
+    Info (12023): Found entity 2: col_freezer_testbench File: C:/EE271Projects/Lab8/Lab7to8/col_freezer.sv Line: 16
+Info (12127): Elaborating entity "DE1_SoC" for the top level hierarchy
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:cdiv" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 30
+Info (12128): Elaborating entity "LEDDriver" for hierarchy "LEDDriver:Driver" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 53
+Info (12128): Elaborating entity "tug_input" for hierarchy "tug_input:meta_input3" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 59
+Info (12128): Elaborating entity "input_validator" for hierarchy "input_validator:valid_in3" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 65
+Info (12128): Elaborating entity "input_attempt" for hierarchy "input_attempt:col_1_input" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 81
+Info (12128): Elaborating entity "clock_counter" for hierarchy "clock_counter:slow_clock" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 99
+Info (12128): Elaborating entity "LFSR_counter" for hierarchy "LFSR_counter:LFSR_clock" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 100
+Info (12128): Elaborating entity "LFSR_twentyfour" for hierarchy "LFSR_twentyfour:pseudo_pulse" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 104
+Info (12128): Elaborating entity "pulse_verifier" for hierarchy "pulse_verifier:pulse_col1" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 117
+Info (12128): Elaborating entity "LED_cascade" for hierarchy "LED_cascade:col_1_cascade" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 130
+Info (12128): Elaborating entity "point_adder" for hierarchy "point_adder:points_col1" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 146
+Info (12128): Elaborating entity "col_freezer" for hierarchy "col_freezer:win_col1" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 155
+Info (12128): Elaborating entity "total_adder" for hierarchy "total_adder:point_total" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 194
+Info (12128): Elaborating entity "point_displayer" for hierarchy "point_displayer:display_drive" File: C:/EE271Projects/Lab8/Lab7to8/DE1_SoC.sv Line: 198
+Info (12128): Elaborating entity "hex_number_picker" for hierarchy "point_displayer:display_drive|hex_number_picker:ones_hex" File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 42
+Info (278001): Inferred 4 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "point_displayer:display_drive|Mod1" File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 34
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "point_displayer:display_drive|Div1" File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 33
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "point_displayer:display_drive|Mod0" File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 33
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "point_displayer:display_drive|Div0" File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 32
+Info (12130): Elaborated megafunction instantiation "point_displayer:display_drive|lpm_divide:Mod1" File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 34
+Info (12133): Instantiated megafunction "point_displayer:display_drive|lpm_divide:Mod1" with the following parameter: File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 34
+    Info (12134): Parameter "LPM_WIDTHN" = "12"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_j3m.tdf
+    Info (12023): Found entity 1: lpm_divide_j3m File: C:/EE271Projects/Lab8/Lab7to8/db/lpm_divide_j3m.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_mlh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_mlh File: C:/EE271Projects/Lab8/Lab7to8/db/sign_div_unsign_mlh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ive.tdf
+    Info (12023): Found entity 1: alt_u_div_ive File: C:/EE271Projects/Lab8/Lab7to8/db/alt_u_div_ive.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "point_displayer:display_drive|lpm_divide:Div1" File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 33
+Info (12133): Instantiated megafunction "point_displayer:display_drive|lpm_divide:Div1" with the following parameter: File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 33
+    Info (12134): Parameter "LPM_WIDTHN" = "12"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_gbm.tdf
+    Info (12023): Found entity 1: lpm_divide_gbm File: C:/EE271Projects/Lab8/Lab7to8/db/lpm_divide_gbm.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "point_displayer:display_drive|lpm_divide:Div0" File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 32
+Info (12133): Instantiated megafunction "point_displayer:display_drive|lpm_divide:Div0" with the following parameter: File: C:/EE271Projects/Lab8/Lab7to8/point_displayer.sv Line: 32
+    Info (12134): Parameter "LPM_WIDTHN" = "12"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_jbm.tdf
+    Info (12023): Found entity 1: lpm_divide_jbm File: C:/EE271Projects/Lab8/Lab7to8/db/lpm_divide_jbm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_plh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_plh File: C:/EE271Projects/Lab8/Lab7to8/db/sign_div_unsign_plh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ove.tdf
+    Info (12023): Found entity 1: alt_u_div_ove File: C:/EE271Projects/Lab8/Lab7to8/db/alt_u_div_ove.tdf Line: 23
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 18 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/EE271Projects/Lab8/Lab7to8/output_files/DE1_SoC.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1028 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 88 output pins
+    Info (21061): Implemented 925 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4893 megabytes
+    Info: Processing ended: Mon May 25 19:11:42 2026
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:10
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/EE271Projects/Lab8/Lab7to8/output_files/DE1_SoC.map.smsg.
+
+

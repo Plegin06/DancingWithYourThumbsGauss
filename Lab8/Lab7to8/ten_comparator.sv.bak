@@ -1,0 +1,7 @@
+module ten_comparator();
+
+endmodule
+
+module ten_comparator_testbench();
+
+endmodule

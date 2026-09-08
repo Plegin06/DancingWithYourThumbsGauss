@@ -1,0 +1,8 @@
+module point_displayer ();
+
+endmodule
+
+module point_displayer_testbench ();
+
+endmodule
+

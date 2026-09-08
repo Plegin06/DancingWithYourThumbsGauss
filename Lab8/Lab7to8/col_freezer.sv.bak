@@ -1,0 +1,7 @@
+module col_freezer (clk, reset, score, greenOut, redOut);
+
+endmodule
+
+module col_freezer_testbench ();
+
+endmodule

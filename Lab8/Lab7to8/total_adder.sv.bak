@@ -1,0 +1,13 @@
+module total_adder (clk, reset, in1, in2, in3, in4, out);
+	input logic clk, reset;
+	input logic [6:0] in1, in2, in3, in4; //twos comp values
+	
+	output logic [9:0] out; //twos comp value
+	
+	
+
+endmodule
+
+module total_adder_testbench ();
+
+endmodule

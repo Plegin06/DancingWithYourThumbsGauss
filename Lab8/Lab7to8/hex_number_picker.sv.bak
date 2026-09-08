@@ -1,0 +1,3 @@
+module hex_number_picker (value, display_value);
+	input logic [4:0] value;
+	output logic [6:0] display_value;

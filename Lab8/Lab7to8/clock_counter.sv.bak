@@ -1,0 +1,9 @@
+module clock_counter (reset, clk, speed_control, out);
+	input logic reset, clk;
+	input logic [
+	output logic out;
+	
+	logic [] counter;
+	
+	always_ff @(posedge clk) begin
+		
