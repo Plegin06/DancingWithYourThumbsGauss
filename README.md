@@ -1,4 +1,4 @@
-Final project from EE271 at UW Seattle in Spring26. 
+Final project from EE271 at UW Seattle in Spring26. Should not be used for this course in the future.
 The Verilog project and its necessary output and input routing files are designed to run on DE1-SoC FPGA Cyclone V (5CSEMA5F31C6N).
 Written in Quartus in System Verilog.
 The project is based moderately closely to a provided spec:
